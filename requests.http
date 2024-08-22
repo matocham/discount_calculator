@@ -1,0 +1,49 @@
+### Create new product
+POST http://localhost:8080/api/v1/products
+Content-Type: application/json
+
+{
+  "name": "Test product 1",
+  "unitPrice": "5.12"
+}
+
+### Get existing product
+GET http://localhost:8080/api/v1/products/7f13e0ed-77fa-451a-9420-f90c31560d2a
+
+### Get existing policy
+GET http://localhost:8080/api/v1/discount_policies/101
+Content-Type: application/json
+
+### Delete existing policy
+DELETE http://localhost:8080/api/v1/discount_policies/301
+
+### Create new policy
+POST http://localhost:8080/api/v1/discount_policies
+Content-Type: application/json
+
+{
+  "applicableProductId": "e5143789-a9c7-4546-9ab7-d53d4d2defdb",
+  "minimumAmount": 2,
+  "discountType": "PERCENTAGE",
+  "discountValue": "50"
+}
+
+### Update existing policy
+PUT http://localhost:8080/api/v1/discount_policies/302
+Content-Type: application/json
+
+{
+  "applicableProductId": "e5143789-a9c7-4546-9ab7-d53d4d2defdb",
+  "minimumAmount": 2,
+  "discountValue": "11"
+}
+
+### Calculate product price with discounts (has discount)
+GET http://localhost:8080/api/v1/products/price?
+    productId=1107c751-820d-423d-b100-3a3890ae2b3d&
+    amount=8
+
+### Calculate product price with discounts (doesnt have discount)
+GET http://localhost:8080/api/v1/products/price?
+    productId=c0d725af-96c5-45f6-86b8-43a45fe2836c&
+    amount=7
